@@ -27,10 +27,22 @@ cd agent-test
 pip install -r requirements.txt
 ```
 
-3. Set your OpenAI API key:
-```bash
-export OPENAI_API_KEY='your-api-key-here'
-```
+3. Configure environment variables:
+   
+   a. Copy the sample environment file:
+   ```bash
+   cp .env.sample .env
+   ```
+   
+   b. Edit the `.env` file and add your OpenAI API key:
+   ```bash
+   # Open .env in your preferred editor
+   nano .env  # or vim, code, etc.
+   ```
+   
+   c. Update the `OPENAI_API_KEY` value with your actual API key from [OpenAI Platform](https://platform.openai.com/api-keys)
+   
+   **Note**: The `.env` file contains sensitive information and should never be committed to version control. Make sure it's listed in your `.gitignore` file.
 
 ## Usage
 
@@ -57,10 +69,26 @@ The script will demonstrate the agent by running example queries that use differ
 
 ```
 agent-test/
-├── simple_agent.py      # Main agent implementation
+├── simple_agent.py      # Main agent implementation with detailed comments
 ├── requirements.txt     # Python dependencies
+├── .env.sample         # Sample environment configuration file
+├── .env                # Your local environment variables (create from .env.sample)
 └── README.md           # This file
 ```
+
+## Environment Configuration
+
+The project uses environment variables for configuration. All settings are defined in the `.env` file:
+
+| Variable | Description | Default | Required |
+|----------|-------------|---------|----------|
+| `OPENAI_API_KEY` | Your OpenAI API key | - | Yes |
+| `OPENAI_MODEL` | OpenAI model to use | `gpt-3.5-turbo` | No |
+| `TEMPERATURE` | Model temperature (0.0-2.0) | `0.0` | No |
+| `MAX_ITERATIONS` | Maximum agent iterations | `10` | No |
+| `VERBOSE` | Show detailed agent reasoning | `true` | No |
+
+See [`.env.sample`](.env.sample) for a complete example with detailed comments.
 
 ## How It Works
 
